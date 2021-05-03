@@ -30,7 +30,10 @@ module.exports = declare((api, options) => {
       name: "babel-plugin-transform-react",
       visitor: {
         JSXIdentifier(path) {
-          if (path.node.name === "data-label") {
+          if (
+            path.node.name === "data-label" ||
+            path.node.name === "data-active"
+          ) {
             path.parentPath.remove();
           }
         },
